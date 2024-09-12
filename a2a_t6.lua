@@ -1,3 +1,5 @@
+ipc.runlua("a2a_t6_axis")
+
 local primerLv = "L:PrimerState"
 local wobblePump = "L:FuelPumpManualLever"
 

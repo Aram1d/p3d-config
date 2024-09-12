@@ -1,3 +1,4 @@
+ipc.runlua("a2a_sf_axis")
 
 local gearHornSilencerLv = "L:GearHornSilencerSwitch"
 

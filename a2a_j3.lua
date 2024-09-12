@@ -1,3 +1,5 @@
+ipc.runlua("a2a_j3_axis")
+
 local fuelLv = "L:Eng1_FuelCutOffSwitch"
 local carbHeatLv = "Eng1_CarbHeatSwitch"
 local primerLv = "L:PrimerOn"

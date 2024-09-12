@@ -1,3 +1,4 @@
+ipc.runlua("a2a_b17_axis.lua")
 function ToggleGroundStuffs()
   if(ipc.axis("C", "T") < -10000) then
     ipc.writeLvar("L:VisGroundStuff",  ipc.readLvar("L:VisGroundStuff") == 1 and 0 or 1)

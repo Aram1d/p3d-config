@@ -1,3 +1,5 @@
+ipc.runlua("a2a_p51_axis")
+
 local gearHornSilencerLv = "L:GearHornSilencerSwitch"
 local carbHeatSwitchLv = "L:Eng1_CarbHeatSwitch"
 local superchargerLv = "L:Eng1_SuperchargerSwitch"
