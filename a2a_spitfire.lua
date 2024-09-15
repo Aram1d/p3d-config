@@ -1,6 +1,8 @@
 ipc.runlua("a2a_sf_axis")
 
 local gearHornSilencerLv = "L:GearHornSilencerSwitch"
+local primerLv = "L:PrimerState";
+
 
 local oxyMask = "L:OxyMaskOn"
 local oxyMaster = "L:OxyMaster"
@@ -18,6 +20,18 @@ local bottTank = "L:BottTankOn"
 function GearHornSilencer()
   ipc.writeLvar(gearHornSilencerLv, ipc.readLvar(gearHornSilencerLv) == 1 and 0 or 1)
 end
+
+-- Primer
+
+function HandleLockPrimer(_, __, off)
+  ipc.writeLvar(primerLv, off == 1 and 0 or 1);
+end;
+
+function Prime()
+  if ipc.readLvar(primerLv) == 1 then
+    ipc.writeLvar(primerLv, 2);
+  end;
+end;
 
 function ToggleOxygen()
   local wasOff = ipc.readLvar(oxyMaster) == 0
@@ -57,9 +71,22 @@ function ToggleBott(_, __, on)
   ipc.writeLvar(bottTank, on)
 end
 
+function ToggleHeadset()
+  local prev = ipc.readLvar("L:Headphones")
+  ipc.writeLvar("L:Headphones", prev == 1 and 0 or 1);
+  ipc.writeLvar("L:Headgear1", prev == 1 and 0 or 1);
+  ipc.writeLvar("L:Headgear2", prev == 1 and 0 or 1);
+  ipc.writeLvar("L:Headgear3", prev == 1 and 0 or 1);
+  ipc.writeLvar("L:Headgear4", prev == 1 and 0 or 1);
+  ipc.writeLvar("L:Headgear5", prev == 1 and 0 or 1);
+  ipc.writeLvar("L:Headgear6", prev == 1 and 0 or 1);
+end;
+
 event.button("C", 0, "GearHornSilencer")
-event.button("C", 2, "ToggleOxygen")
+event.button("C", 2, "Prime")
+event.button("C", 134, 3, "HandleLockPrimer");
 event.button("C", 3, "ToggleGearEmergencyPressure")
+event.button("C", 4, "ToggleHeadset")
 event.button("C", 6, "ToggleHeadphones")
 event.button("C", 18, "RaiseLdgLight")
 event.button("C", 20, "LowerLdgLight")

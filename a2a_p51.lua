@@ -4,7 +4,7 @@ local gearHornSilencerLv = "L:GearHornSilencerSwitch"
 local carbHeatSwitchLv = "L:Eng1_CarbHeatSwitch"
 local superchargerLv = "L:Eng1_SuperchargerSwitch"
 local superchargerGuard = "L:Eng1_SuperchargerSwitchGuard"
-local headphones = "L:Headphones"
+
 
 
 function GearHornSilencer()
@@ -30,13 +30,8 @@ function HandleSupercharger(_, inc)
   end
 end
 
-function ToggleHeadphones()
-  ipc.writeLvar(headphones, ipc.readLvar(headphones) == 1 and 0 or 1)
-end
-
 event.button("C", 0, "GearHornSilencer")
 event.button("C", 13, "HandleCarbHeat")
 event.button("C", 15, "HandleCarbHeat")
 event.button("C", 18, "HandleSupercharger")
 event.button("C", 20, "HandleSupercharger")
-event.button("C", 6, "ToggleHeadphones")
